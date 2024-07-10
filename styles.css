@@ -6,21 +6,23 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(135deg, #5feabe 0%, #75f861 100%);
+    background: linear-gradient(135deg, #80cf7f 0%, #40fcae 100%);
     font-family: 'Verdana', sans-serif;
     color: #fff;
+    overflow: hidden;
 }
 
 .container {
     text-align: center;
     padding: 30px;
-    background: rgba(127, 126, 126, 0.9);
+    background: rgba(184, 184, 184, 0.9);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     border-radius: 15px;
     max-width: 90%;
     height: 70vh;
     overflow-y: auto;
     animation: fadeIn 1s ease-in-out;
+    position: relative;
 }
 
 button {
@@ -31,22 +33,27 @@ button {
     border-radius: 10px;
     background-color: #007BFF;
     color: white;
-    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s, box-shadow 0.3s;
     margin: 5px;
     font-family: 'Verdana', sans-serif;
 }
 
 button:hover {
-    background-color: #080808;
+    background-color: #0056b3;
     color: white;
     transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+    transform: scale(0.95);
 }
 
 h1 {
     padding: 15px;
     border-radius: 10px;
     background-color: #ffdd57;
-    color: rgb(0, 5, 7);
+    color: black;
     margin-bottom: 20px;
     animation: slideIn 1s ease-in-out;
 }
@@ -58,12 +65,13 @@ h1 {
     color: black;
     border-radius: 10px;
     min-height: 150px;
-    max-height: calc(70vh - 150px); 
+    max-height: calc(70vh - 150px);
     overflow-y: auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     word-wrap: break-word;
     white-space: pre-wrap;
     text-align: left;
+    overflow-y: auto;
 }
 
 @keyframes fadeIn {
@@ -84,4 +92,17 @@ h1 {
         transform: translateY(0);
         opacity: 1;
     }
+}
+
+button#copy-btn {
+    background-color: #28a745;
+}
+
+button#copy-btn:hover {
+    background-color: #218838;
+}
+
+button#copy-btn:active {
+    transform: scale(0.95);
+    background-color: #1e7e34;
 }
