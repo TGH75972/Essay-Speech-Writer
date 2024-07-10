@@ -1,5 +1,6 @@
 const startBtn = document.getElementById('start-btn');
 const stopBtn = document.getElementById('stop-btn');
+const copyBtn = document.getElementById('copy-btn');
 const textContainer = document.getElementById('text-container');
 
 let recognition;
@@ -31,7 +32,8 @@ if ('webkitSpeechRecognition' in window) {
         let interimTranscript = '';
         for (let i = event.resultIndex; i < event.results.length; ++i) {
             if (event.results[i].isFinal) {
-                textContainer.innerHTML += event.results[i][0].transcript + '<br>';
+                textContainer.textContent += event.results[i][0].transcript + ' ';
+                textContainer.scrollTop = textContainer.scrollHeight; 
             } else {
                 interimTranscript += event.results[i][0].transcript;
             }
@@ -53,3 +55,12 @@ if ('webkitSpeechRecognition' in window) {
     console.error('Speech recognition not supported in this browser.');
     alert('Speech recognition not supported in this browser.');
 }
+
+copyBtn.addEventListener('click', () => {
+    const text = textContainer.textContent;
+    navigator.clipboard.writeText(text).then(() => {
+        alert('Text copied to clipboard!');
+    }).catch(err => {
+        console.error('Failed to copy text: ', err);
+    });
+});
